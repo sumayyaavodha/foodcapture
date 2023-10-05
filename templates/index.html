@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    FILTER
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/">ALL</a>
+      {% for i in ct %}
+    <a class="dropdown-item" href="{{i.get_url}}">{{i.name}}</a>
+      {% endfor %}
+  </div>
+</div>
+<div class="category">
+
+    <b style="color:white">
+        <a href=></a><br>
+    </b>
+
+</div>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="foods" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="row">
+                    {% for i in pr.object_list %}
+                    <div class="col-md-4">
+                        <div class="card bg-transparent border my-3 my-md-0">
+                            <a href="{{i.get_url}}"><img src="{{i.img.url}}" alt="template by DevCRID http://www.devcrud.com/" class="rounded-0 card-img-top mg-responsive" height="350"></a>
+                            <div class="card-body">
+                                <h1 class="text-center mb-4"><a href="#" class="badge badge-primary">{{i.price}} Rs</a></h1>
+                                <h4 class="pt20 pb20">{{i.name}}</h4>
+                                <p class="text-white">{{i.desc|truncatewords:17}}</p>
+                                <p class="text-white">stock left: {{i.stock}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="mx-auto">
+                    <div class="text-center">
+                    {% for pg in pr.paginator.page_range %}
+                    <a href="?page={{pg}}" class="btn btn-light btn-sm {% if prodts.number == pg %} activate {% endif %}">{{pg}}</a>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!-- REVIEWS Section  -->
+    <script src="{% static 'as/vendors/jquery/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'as/vendors/bootstrap/bootstrap.bundle.js' %}"></script>
+		<!-- bootstrap affix -->
+    <script src="{% static 'as/vendors/bootstrap/bootstrap.affix.js' %}"></script>
+		<!-- wow.js -->
+    <script src="{% static 'as/vendors/wow/wow.js' %}"></script>
+    <!-- google maps -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
+		<!-- FoodHut js -->
+    <script src="{% static 'as/js/foodhut.js' %}"></script>
+</html>
+{% endblock %}

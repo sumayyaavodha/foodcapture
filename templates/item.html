@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- basic -->
+  <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Gare lick</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'ks/css/bootstrap.min.css' %}">
+      <!-- style css -->
+      <link rel="stylesheet" href="{% static 'ks/css/style.css' %}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{% static 'ks/css/responsive.css' %}">
+      <!-- fevicon -->
+      <link rel="icon" href="{% static 'ks/images/fevicon.png' %}" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{% static 'ks/css/jquery.mCustomScrollbar.min.css' %}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/ks/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- about -->
+      <div id="about"  class="about">
+         <div class="container-fluid">
+            <div class="row d_flex">
+               <div class="col-xl-7 col-lg-7 col-md-12 padding_left">
+                  <div class="about_img">
+                     <figure><img src="{{pr.img.url}}" alt=""/></figure>
+                  </div>
+               </div>
+               <div class="col-xl-5 col-lg-5 col-md-12">
+                  <div class="about_text">
+                     <div class="titlepage">
+                        <h2>{{pr.name}}</h2>
+                        <p>{{pr.desc}}</p>
+                         <p>price: {{pr.price}} Rs</p>
+                         <p>stock: {{pr.stock}}</p>
+                         {% if pr.stock <= 0 %}
+                         <h1 style="color:red">sorry. NO stock left</h1>
+                         {% else %}
+                         <a href="{% url 'addcart' pr.id %}" class="btn btn-success">Add to Cart</a>
+                         {% endif %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end about -->
+      <!-- Javascript files-->
+      <script src="{% static 'ks/js/jquery.min.js' %}"></script>
+      <script src="{% static 'ks/js/popper.min.js' %}"></script>
+      <script src="{% static 'ks/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'ks/js/jquery-3.0.0.min.js' %}"></script>
+      <script src="{% static 'ks/js/plugin.js' %}"></script>
+      <!-- sidebar -->
+      <script src="{% static 'ks/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+      <script src="{% static 'ks/js/custom.js' %}"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+   </body>
+</html>
+{% endblock %}
